@@ -1,22 +1,19 @@
-# Npm Package Loader [![NPM Publisher Support](https://img.shields.io/badge/maintained%20with-NPM%20Publisher%20Support-blue.svg)](https://github.com/vanifatovvlad/NpmPublisherSupport)
+# Npm Package Loader [![Github license](https://img.shields.io/github/license/codewriter-packages/NpmPackageLoader.svg)](#)
 
-Npm предлагает удобный способ управления пакетами. Однако некоторые пакеты 
-обладают слишком большим размером и не могут быть загружены в репозиторий,
-либо требуют установки непосредственно в папку Assets проекта.
+Npm offers a convenient way to manage packages. However, 
+some packages are too large and cannot be uploaded to the repository,
+ or require installation directly into the project's Assets folder.
+ 
+ Npm Package Loader allow you to archive some assets into a standard 
+ `unitypackage` package and embed it into npm package or upload 
+ on the ftp server This assets will be automatically downloaded 
+ and unpacked directly into the project.
 
-Npm Package Loader позволяет архивировать часть ассетов в стандартный
-`unitypackage` пакет, который может быть размещён как в самом npm,
-так и на ftp сервере и будет автоматически скачан и распакован
-непосредственно в проект.
+### How to create package?
 
-## Создание пакета
-
-#### 1. Установить Npm Package Loader и [Npm Publisher Support](https://github.com/vanifatovvlad/NpmPublisherSupport)
-Могут быть установлены из npm репозитория
-
-#### 2. Создать package.json
-
-Может выглядеть примерно так:
+#### 1. Install Npm Package Loader and [Npm Publisher Support](https://github.com/codewriter-packages/NpmPublisherSupport)
+#### 2. Create package.json
+Might look something like:
 ```
 {
   "name": "com.codewriter.npm-package-loader-demo-sdk",
@@ -29,48 +26,54 @@ Npm Package Loader позволяет архивировать часть асс
 }
 ```
 
-#### 3. Создать ассет UnityPackage Loader
+#### 3. Create UnityPackage Loader asset
 [![Create asset](https://user-images.githubusercontent.com/26966368/62519337-04367a00-b834-11e9-9279-327948c65fa0.png)](#)
 
-Ассет должен располагаться рядом с `package.json`
+Asset must be placed next to `package.json`
 
-#### 4. Указать данные
+#### 4. Setup asset
 [![Asset content](https://user-images.githubusercontent.com/26966368/62519851-0fd67080-b835-11e9-9cd0-d018c4a6bfc7.png)](#)
 
-В `Packed Assets` можно добавлять как отдельные файлы, так и целые папки. 
+You can add individual files or entire folders to `Packed Assets`.
 
-#### 5. Добавить зависимость
+#### 5. Add dependency
 
-После создания Loader в окне `Npm Publish` появится раздел `External loaders`, 
-где необходимо добавить в зависимости `npm-package-loader` с помощью кнопки `Add` 
-и опубликовать пакет, после чего он может быть установлен из npm репозитория.
+`External loaders` section will appear in the` Npm Publish` window 
+after creating the Loader. Add `npm-package-loader` dependency 
+using the` Add` button and publish the package. 
+Then it can be installed from the npm repository.
 
-> Если зависимость от `npm-package-loader` отмечена как Unknown 
-> необходимо проверить что установлен пакет Npm Package Loader 
-> после чего вручную указать в `package.json` актуальную версию пакета
+> If `npm-package-loader` dependency is marked as Unknown, 
+> you need to check that Npm Package Loader package is installed correctly 
+> or manually specify the current version of the package in `package.json`.
 
 [![Install deps](https://user-images.githubusercontent.com/26966368/62523535-a35f6f80-b83c-11e9-9504-677e40907eca.png)](#)
 
-## Установка пакета
+### How to install package?
 
-Созданный пакет может быть скачан из npm репозитория. После установки пакета
-автоматически должно появиться окно подтверждения скачивания дополнительных файлов
+Created package can be downloaded from the npm registry. 
+A confirmation window for downloading additional files 
+should appear automatically after installing the package.
 
 [![Install package](https://user-images.githubusercontent.com/26966368/62521665-c0923f00-b838-11e9-805a-f6fd1920bf2a.png)](#)
 
-> Если окно не появилось, оно может быть вызвано вручную в меню `Window/Check Npm Package Loaders`
+> Window can be manually opened from `Window / Check Npm Package Loaders` menu
 
-После подтверждения дополнительные файлы будут скачаны и распакованы
+Additional assets will be downloaded and unpacked after confirmation.
 
 [![Import package](https://user-images.githubusercontent.com/26966368/62522173-cccacc00-b839-11e9-9052-3a99a31370aa.png)](#)
 
-## FAQ
+### Install
+Library distributed as git package ([How to install package from git URL](https://docs.unity3d.com/Manual/upm-ui-giturl.html))
+<br>Git URL: `https://github.com/codewriter-packages/NpmPackageLoader.git`
 
-#### Для чего создается папка Assets/Packages?
-Это служебная папка необходимая для отслеживания установленных пакетов
+### FAQ
 
-#### Как обновить пакет до новой версии?
-Новую версию можно скачать через npm. После обновления npm пакета должно атоматически появиться предложение обновить дополнительные файлы
+#### What is the Assets/Packages folder created for?
+This is a system folder needed to keep track of installed packages.
 
-#### Как переустановить пакет?
-Для переустановки можно удалить подпапку ассета из Assets/Packages и выполнить команду `Window/Check Npm Package Loaders`
+#### How do I update a package to a new version?
+The new version can be downloaded via npm. You should automatically be prompted to update additional files after updating the npm package.
+
+#### How do I reinstall a package?
+You can remove the asset subfolder from Assets/Packages and execute the command `Window/Check Npm Package Loaders`
